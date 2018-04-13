@@ -1,0 +1,193 @@
+nav ul
+
+{
+
+
+
+    list-style-type: none;
+
+    display: flex;
+    background-color: white ;
+    margin: 0;
+    padding: 0;
+    
+
+
+
+
+}
+
+
+header a 
+{
+	
+	  display: block;
+    color: white;
+    text-align: center;
+    padding: 10% 14%;
+    text-decoration: none;
+}
+
+
+
+ nav li
+{
+
+	
+background-color:rgba(200,40,57,0.5) ;
+
+	background-color: black;
+	 
+ height: 40px;
+	width: 120px;
+
+
+
+
+}
+
+
+li 
+{	
+	text-align: center;
+	margin-right: 3px;
+
+}
+
+article, header, footer  
+{
+width: 70%;
+
+margin-right: auto;
+margin-left: auto;
+
+
+
+}
+
+
+
+
+body
+{
+margin-right: auto;
+margin-left: auto;
+text-align: center;
+
+}
+header
+{
+	
+display: flex;
+
+	
+}
+
+footer
+{
+	background: #B22222;
+
+}
+
+
+.im
+{
+	width: 50px;
+	height: 50px;
+	/*margin-left: 20%;
+	margin-top: 10%;*/
+	float: none;
+
+
+}
+
+
+footer p 
+{
+	
+	color: white;
+	display: flex;
+	
+		margin-left:  20%
+}
+
+.imglogo
+{
+
+	width: 130px;
+	height: 60px;
+	margin-right:  10%;
+	margin-top: 10px;
+
+	
+}
+
+.log1
+{
+position:relative;
+
+
+}
+
+
+
+.foot
+{
+	
+	display: flex;
+
+
+}
+.mention
+{
+color: white;
+	
+}
+
+.imglogo
+{
+
+	width: 20%;
+	height: 80%;
+	float: left;
+	
+}
+
+.img
+{
+display:block;
+width:auto;
+float: right;	
+}
+
+.foot-b{
+	display: flex;
+	margin: auto;
+	padding: 45px;
+	background: #B22222;
+
+
+}
+.head {
+	display: flex;
+}
+.inscr{
+	margin-left: auto;
+}
+footer a:active{
+	text-decoration-color: red;
+}
+footer a:hover {
+	text-decoration: none;
+
+}
+section  {
+	margin-top:  2%;
+	margin-bottom : 2%;
+	margin-left: 15%;
+	margin-right: 15%;
+	background-color: #B22222;
+	font-size: 40px;
+	font-family: Times, Times New Roman, serif	;
+	color: white;
+}
