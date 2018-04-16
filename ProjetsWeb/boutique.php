@@ -1,3 +1,15 @@
+<?php  
+	session_start();
+    if (!isset($_SESSION['Nom'])) {
+   		echo "connecte toi connard";
+    } 
+    else{
+    	
+    	
+    }
+
+?>
+
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="Css/style.css"/>
@@ -10,7 +22,7 @@
 	<header>
 
 	 
-		<img src="Image/exia.png">
+		
 
 		<?php 
 

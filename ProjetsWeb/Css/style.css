@@ -54,7 +54,7 @@ li
 
 }
 
-article, header, footer  
+article, header
 {
 width: 70%;
 
@@ -79,13 +79,15 @@ header
 {
 	
 display: flex;
+margin-bottom: 3%;
 
 	
 }
 
 footer
 {
-	background: #B22222;
+	background: #CECECE;
+	margin-top: 5%;
 
 }
 
@@ -102,25 +104,9 @@ footer
 }
 
 
-footer p 
-{
-	
-	color: white;
-	display: flex;
-	
-		margin-left:  20%
-}
 
-.imglogo
-{
 
-	width: 130px;
-	height: 60px;
-	margin-right:  10%;
-	margin-top: 10px;
 
-	
-}
 
 .log1
 {
@@ -131,56 +117,22 @@ position:relative;
 
 
 
-.foot
-{
-	
-	display: flex;
 
-
-}
 .mention
 {
 color: white;
 	
 }
 
-.imglogo
-{
-
-	width: 20%;
-	height: 80%;
-	float: left;
-	
-}
-
-.img
-{
-display:block;
-width:auto;
-float: right;	
-}
-
-.foot-b{
-	display: flex;
-	margin: auto;
-	padding: 45px;
-	background: #B22222;
 
 
-}
 .head {
 	display: flex;
 }
 .inscr{
 	margin-left: auto;
 }
-footer a:active{
-	text-decoration-color: red;
-}
-footer a:hover {
-	text-decoration: none;
 
-}
 section  {
 	margin-top:  2%;
 	margin-bottom : 2%;

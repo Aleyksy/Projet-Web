@@ -1,6 +1,3 @@
-<?php session_start(); 
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -60,8 +57,6 @@ $afficher = $bdd->query('SELECT * FROM evenement ');
 	<p><?php echo $donnes['Description'];  ?></p>
 	<p><?php echo $donnes['ID_eve'];  ?></p>
 
-	<a href="infoeve.php?evenement=<?php echo $donnes['ID_eve']  ?>"> Pour Plus d'info.. </a>
-
 	<p class="overflow-ellipsis"> 
 	 </p>
 	</div>
@@ -78,15 +73,16 @@ $afficher = $bdd->query('SELECT * FROM evenement ');
 
  $date = $likes->fetch(); ?>
 
-<script type="text/javascript"  src="ajax.js"></script>
 
- <p >  nombre de like :</p>  <p id="plop"><?php echo $date['participant'];  ?></p> <a class="imglike" href="fullbidon"  onclick="afficher();" ><img  style="width: 7%" src="Image/like.png" ></a> 
 
-<script type="text/javascript">
-/*function afficher() {
-    alert("PLOP");
+<p >  nombre de like :</p>  <p id="plop"><?php echo $date['participant'];  ?></p> <a class="imglike" href="fullbidon"><img  style="width: 7%" src="Image/like.png" ></a> 
 
-    var result =document.getElementById('plop');
+
+  <script type="text/javascript"  src="ajax.js"></script>
+
+
+<script>
+var result =document.getElementById('plop');
 
 
     
@@ -102,7 +98,8 @@ for(var i =0; i<links.length; i++)
  e.preventDefault();
 
 
-
+ <?php 
+ ?> 
 
  
 
@@ -122,14 +119,29 @@ for(var i =0; i<links.length; i++)
 
 httpRequest.open('GET','ajaxlike.php',true);
 httpRequest.send();
-  };
+  });
 }
-
-}*/
 </script>
 
 
-	
+
+
+
+
+
+
+
+
+ 
+
+    
+
+
+
+
+
+    
+		
 	
 	</div>
 		
@@ -141,6 +153,20 @@ httpRequest.send();
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	<footer>
 		<?php
 		include('footer.php');

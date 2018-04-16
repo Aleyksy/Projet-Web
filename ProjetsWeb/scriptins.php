@@ -6,10 +6,9 @@
 
 
 
-if (isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['repassword']) AND isset($_POST['e-mail']) AND strlen($_POST['pseudo']) > 3)
+if (isset($_POST['Nom']) AND isset($_POST['Prenom']) AND isset($_POST['password']) AND isset($_POST['repassword']) AND isset($_POST['e-mail']))
 {
-   echo '<p>' . ' Vous vous êtes trompé en retapant votre mot de passe' . '</p>';
-
+   
 
 
    if ($_POST['password'] == $_POST['repassword'] AND preg_match('#^[\w.-]+@viacesi\.fr#i', $_POST['e-mail']))
@@ -18,17 +17,20 @@ if (isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['repa
 echo '<p>'.'Votre compte a bien était créer' . '</p>';
 echo $_POST['password'] .'</br>' ;
 $pass_hache = md5($_POST['password'], PASSWORD_DEFAULT);
-$pseudo = $_POST['pseudo'] ;
+$nom = $_POST['Nom'];
+$prenom = $_POST['Prenom'];
 $email = $_POST['e-mail'] ;
 
 
 echo $pass_hache .'</br>' ;
 
-$req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Password, Mail, Date_Inscription) VALUES(:pseudo, :password, :email, CURDATE())');
+$req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Password, Mail, Date_Inscription) VALUES(:Nom, :Prenom,  :password, :email, CURDATE())');
 
 $req->execute(array(
 
-    'pseudo' => $pseudo,
+    'Nom' => $nom,
+
+    'Prenom' => $prenom,
 
     'password' => $pass_hache,
 
@@ -38,6 +40,9 @@ $req->execute(array(
 
 header('Location: index.php');
 }
+elseif ($_POST['password'] != $_POST['repassword']) {
+	header('Location: inscription.php?errorpswd');
+}
 
 
 
@@ -45,9 +50,7 @@ header('Location: index.php');
   else 
 { 
 
- echo '<p>' .'Votre compte na pas était ajouter recommencer' . '</p>';
-
-	header('Location: inscription.php');
+	header('Location: inscription.php?error');
    
 
 }

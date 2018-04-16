@@ -12,29 +12,26 @@ if (isset($_POST['e-mail']) AND isset($_POST['password']))
 $pass_hache = md5($_POST['password'], PASSWORD_DEFAULT);
 $mail = $_POST['e-mail'] ;
 
-echo $mail;
-echo $pass_hache;
 
-$reqe = $bdd->prepare('SELECT * FROM utilisateurs WHERE Mail = :mail AND Password = :password');
 
-$reqe->execute(array(
+$req = $bdd->prepare('SELECT * FROM utilisateurs WHERE Mail = :mail AND Password = :password');
+
+$req->execute(array(
 
     'mail' => $mail,
 
     'password' => $pass_hache));
 
 
-$resultat = $reqe->fetch();
+$resultat = $req->fetch();
 
 
 if (!$resultat)
 
-{
- 
-    echo 'Mauvais identifiant ou mot de passe !';
-
-
-
+{ 
+  header('Location: connexion.php?error');
+   
+  
 }
 
 else
@@ -45,12 +42,12 @@ else
 
     $_SESSION['id'] = $resultat['ID'];
 
-    $_SESSION['pseudo'] = $resultat['Nom'];
+    $_SESSION['Nom'] = $resultat['Nom'];
     
-
 $req->closeCursor();
 
-    header('Location: index2.php');
+
+    header('Location: accueil.php');
 
 	}	
 
