@@ -1,0 +1,245 @@
+nav ul
+
+{
+    list-style-type: none;
+    display: flex;
+    background-color: white ;
+    margin: 0;
+    padding: 0;
+}
+
+
+header a 
+{
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 10% 14%;
+    text-decoration: none;
+}
+
+
+
+ nav li
+{
+	background-color:rgba(200,40,57,0.5) ;
+
+	background-color: black; 
+ 	height: 40px;
+	width: 120px;
+}
+
+
+li 
+{	
+	text-align: center;
+	margin-right: 3px;
+}
+
+article, header, footer  
+{
+	width: 70%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+
+body
+{
+margin-right: auto;
+margin-left: auto;
+text-align: center;
+
+}
+
+header
+{	
+	display: flex;
+}
+
+footer
+{
+	background: #B22222;
+}
+
+.im
+{
+	width: 50px;
+	height: 50px;
+	/*margin-left: 20%;
+	margin-top: 10%;*/
+	float: none;
+}
+
+
+footer p 
+{	
+	color: white;
+	display: flex;
+	margin-left:  20%
+}
+
+.imglogo
+{
+	width: 130px;
+	height: 60px;
+	margin-right:  10%;
+	margin-top: 10px;
+}
+
+.log1
+{
+	position:relative;
+}
+
+
+
+.foot
+{	
+	display: flex;
+}
+
+.mention
+{
+	color: white;
+}
+
+.imglogo
+{
+	width: 20%;
+	height: 80%;
+	float: left;	
+}
+
+.img
+{
+	display:block;
+	width:auto;
+	float: right;	
+}
+
+.foot-b
+{
+	display: flex;
+	margin: auto;
+	padding: 45px;
+	background: #B22222;
+}
+
+.head 
+{
+	display: flex;
+}
+
+.inscr
+{
+	margin-left: auto;
+}
+
+footer a:active{
+	text-decoration-color: red;
+}
+
+footer a:hover 
+{
+	text-decoration: none;
+}
+section  
+{
+	margin-top:  2%;
+	margin-bottom : 2%;
+	margin-left: 15%;
+	margin-right: 15%;
+	background-color: #B22222;
+	font-size: 40px;
+	font-family: Times, Times New Roman, serif	;
+	color: white;
+}
+.Idea
+{
+	border-radius: 5px 5px 5px 5px;
+	margin-left: 25%;
+	margin-right: 25%;
+	border-width:3px;
+	border-style: solid;
+	width :50%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-shadow: 5px 5px 5px #fb5b3d;
+}
+
+.Idea_ID_Date
+{
+	font-size: 12px;
+	display: flex;
+}
+.Idea_ID
+{
+	padding-top: 2px; 
+	padding-bottom: 2px; 
+	padding-left: 1%;
+	width: 50%; 
+	color: white;
+	text-align: left;
+	border-style: solid;
+	border-color:black;
+	border-width: 1px;
+	background-color: #ba0000;
+}
+
+.Idea_Date
+{
+	padding-top: 2px; 
+	padding-right: 1%;
+	padding-bottom: 2px; 
+	width: 50%; 
+	color: white;
+	text-align: right;
+	border-style: solid;
+	border-color:black;
+	border-width: 1px;
+	background-color: #ba0000;
+}
+
+.Idea_Objet
+{
+	margin-top: -10px;
+	background-color: #e66868;
+	text-align: center;
+	color: black;
+}
+
+.Idea_Description 
+{
+	margin-top: -5px;
+	margin-left: 1%;
+	font-size: 12px;
+	text-align: left;
+}
+
+.Idea_Valider
+{
+
+	background: url("Image/Valider.png") no-repeat left;
+	background-position: 10%;
+	background-color: #73B226;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-decoration: none;
+	display: inline-block;
+	width: 10%;
+	margin-left: 90%;
+	font-size: 10px;
+	color: black;
+	text-decoration: none;
+	border-radius: 2px 2px 2px 2px;
+}
+
+.Idea_Valider:hover
+{
+	text-decoration: none;
+	background-color: #ba0000;
+	color: white
+}
