@@ -5,33 +5,35 @@
 if (isset($_POST['e-mail']) AND isset($_POST['password']))
 {
 // echo '<p>'. ' salut mon pote' . '</p>';
-    $bdd = new PDO('mysql:host=localhost;dbname=test','root','');
+    $bdd = new PDO('mysql:host=localhost;dbname=phpweb','root','');
 
 
 
 $pass_hache = md5($_POST['password'], PASSWORD_DEFAULT);
-$pseudo = $_POST['e-mail'] ;
+$mail = $_POST['e-mail'] ;
 
+echo $mail;
+echo $pass_hache;
 
+$reqe = $bdd->prepare('SELECT * FROM utilisateurs WHERE Mail = :mail AND Password = :password');
 
-$req = $bdd->prepare('SELECT * FROM membre WHERE mail = :pseudo AND pass = :password');
+$reqe->execute(array(
 
-$req->execute(array(
-
-    'pseudo' => $pseudo,
+    'mail' => $mail,
 
     'password' => $pass_hache));
 
 
-$resultat = $req->fetch();
+$resultat = $reqe->fetch();
 
 
 if (!$resultat)
 
 {
-
+ 
     echo 'Mauvais identifiant ou mot de passe !';
-      include('index.php');
+
+
 
 }
 
@@ -41,14 +43,14 @@ else
 
    session_start();
 
-    $_SESSION['id'] = $resultat['id'];
+    $_SESSION['id'] = $resultat['ID'];
 
-    $_SESSION['pseudo'] = $resultat['speudo'];
+    $_SESSION['pseudo'] = $resultat['Nom'];
     
+
 $req->closeCursor();
 
-
-    header('Location: index.php');
+    header('Location: index2.php');
 
 	}	
 

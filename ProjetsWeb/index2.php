@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+    session_start(); 
+    if (!isset($_SESSION['pseudo'])) {
+       header ('Location: index.php');
+       exit(); 
+    } 
+
+    else 
+    {
+    		echo  '<p class="hello">' .' salut les gas le site marche de ouff ' . '</p>' ;
+
+			echo $_SESSION['pseudo'];
+    }
+
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8" />
@@ -10,7 +24,7 @@
 	<header>
 
 	 
-		
+		<img src="Image/exia.png">
 
 		<?php 
 

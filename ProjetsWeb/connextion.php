@@ -22,17 +22,15 @@
 	</header>
 
 
-<form action="scriptins.php" method="post">
+<form action="scriptcon.php" method="post">
     <p>
-      <label>Utilisateur   <input type="text" name="pseudo" required="required" /></label>
+     	<label>Mail        <input type="text" name="e-mail" required="required"  /></label>
+     		 </br>
+       
+       <label>Passeword    <input type="password" name="password" required="required"  /></label>
       
       </br>
-         <label>Passeword    <input type="password" name="password" required="required"  /></label>
-      </br>
-      <label>Re Passeword    <input type="password" name="repassword" required="required"  /></label>
-      </br>
-      <label>Mail        <input type="text" name="e-mail" required="required"  /></label>
-      </br>
+      
                         <input type=submit value="Valider"/>
     </p>
 

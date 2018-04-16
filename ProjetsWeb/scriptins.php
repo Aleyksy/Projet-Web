@@ -2,7 +2,7 @@
 
 
 
- $bdd = new PDO('mysql:host=localhost;dbname=test','root','');
+ $bdd = new PDO('mysql:host=localhost;dbname=phpweb','root','');
 
 
 
@@ -12,7 +12,7 @@ if (isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['repa
 
 
 
-   if ($_POST['password'] == $_POST['repassword'] AND preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['e-mail']))
+   if ($_POST['password'] == $_POST['repassword'] AND preg_match('#^[\w.-]+@viacesi\.fr#i', $_POST['e-mail']))
    {
     
 echo '<p>'.'Votre compte a bien était créer' . '</p>';
@@ -24,7 +24,7 @@ $email = $_POST['e-mail'] ;
 
 echo $pass_hache .'</br>' ;
 
-$req = $bdd->prepare('INSERT INTO membre(speudo, pass, mail, date_inscription) VALUES(:pseudo, :password, :email, CURDATE())');
+$req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Password, Mail, Date_Inscription) VALUES(:pseudo, :password, :email, CURDATE())');
 
 $req->execute(array(
 
@@ -44,9 +44,11 @@ header('Location: index.php');
   
   else 
 { 
-	header('Location: inscription.php');
-    echo '<p>' .'Votre compte na pas était ajouter recommencer' . '</p>';
 
+ echo '<p>' .'Votre compte na pas était ajouter recommencer' . '</p>';
+
+	header('Location: inscription.php');
+   
 
 }
 
