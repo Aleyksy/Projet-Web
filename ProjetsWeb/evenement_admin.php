@@ -38,7 +38,8 @@
   				</ul>
   			<div class="card-body">
   					<button type="button" class="btn btn-outline-light"> 5 <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
-   				 <a href="evenement_id.php" class="btn btn-primary btn-danger active">Photo et plus</a> <!-- redirection vers la parge de l'event -->
+   				 <a href="#" class="btn btn-primary btn-danger active">Photo et plus</a> <!-- redirection vers la parge de l'event -->
+   				 <button type="button" class="btn btn-warning active"> <span class="glyphicon glyphicon-remove"></span> supprimer </button>
  			</div>
 		</div>
 	</div>
