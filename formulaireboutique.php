@@ -25,11 +25,17 @@
 <article>
 	<h1><span> Nouvel article :</span></h1>
 	<form>
-		 <div class ="form-row">
- 				<div class="col-md-12">
-   	<div class="form-group col-md-6 col-md-push-3">
-      <input type="text" class="form-control" placeholder="nom de l'article">
-    	</div>	 
+	<div class ="form-row">
+ 	<div class="col-md-12">
+		<div>
+			<label for="formGroupExampleInput">Article</label>
+		</div>
+		<div class="form-group col-md-3 col-md-push-3">
+      		<input type="text" class="form-control" placeholder="Nom de l'article">
+  	  </div>
+   	<div class="form-group col-md-3 col-md-push-3">
+      <input type="text" class="form-control" placeholder="Prix de l'article">
+    	</div> 
 	</div>
  </div>
 		<div class ="form-row">
