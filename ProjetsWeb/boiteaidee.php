@@ -9,8 +9,6 @@
 <body>
 	<header>
 
-	 
-		<img src="Image/exia.png">
 
 		<?php 
 
@@ -24,57 +22,34 @@
 
 	<?php
 
-		$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=phpweb;charset=utf8', 'root', '');
 			
 		$requete = $bdd->query("SELECT * FROM boite_idees");
 
-		while ($test = $requete->fetch() ) {
+		while ($Reader = $requete->fetch() ) {
 	?>
 			<div class="Idea">
+
 				<div class="Idea_ID_Date">
-	    			<p class="Idea_ID"> ID : <?php echo $test["ID"]; ?> </p>
-	    			<p class="Idea_Date">Date : <?php echo $test["Date_Soumission"]; ?> </p>
+
+	    			<p class="Idea_ID"> ID : <?php echo $Reader["ID"]; ?> </p>
+	    			<p class="Idea_Date">Date : <?php echo $Reader["Date_Soumission"]; ?> </p>
+
 	    		</div>
+
 	    		<div>
-	    			<p class="Idea_Objet"> Objet : <?php echo $test["Objet"]; ?>  </p>
-					<p class="Idea_Description">Description : <?php echo $test["Description"]; ?> </p>
-				</div>
 
-				<?php 
-
-				if(isset($_SESSION['id']))
-				{
-
-
-					?>
-
-					<div>
-
-						<a href = "" onclick="test()" class="Idea_Valider">Valider</a>
+	    			<p class="Idea_Objet"> Objet : <?php echo $Reader["Objet"]; ?>  </p>
+					<p class="Idea_Description">Description : <?php echo $Reader["Description"]; ?> </p>
 
 				</div>
 
-				<?php
+				<div>
 
-				}
-
-				if(isset($_SESSION['id']))
-				{
-
-
-					?>
-
-					<div>
-
-						<a href = "" onclick="test()" class="Idea_Suppr" style="background-color: red;">Suppr</a>
+					<a href = "ScriptIdeaMove.php?mode=0&id=<?php echo $Reader["ID"];?>"  class="Idea_Valider">Valider</a>
+					<a href = "ScriptIdeaMove.php?mode=1&id=<?php echo $Reader["ID"];?>" class="Idea_Suppr" style="background-color: red;">Suppr</a>
 
 				</div>
-
-				<?php
-
-				}
-				?>
-				
 				
 			</div>
 	<?php  
