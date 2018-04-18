@@ -1,3 +1,14 @@
+<?php  
+  session_start();
+    if (!isset($_SESSION['Nom']) AND !isset($_SESSION['Prenom'])) {
+      echo "connecte toi connard";
+    } 
+    else{
+      
+      
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,14 +39,23 @@
 	<div class = "row">
 
 		<div class=" col-lg-8 col-lg-push-2">
-			<div class="card text-center">
+			<div class="card text-center" style="background: 	#F8F8FF;">
 
-				<div class="card-header" style="color: white; background: #A52A2A;">
-
-	    			<p class="Idea_ID"> ID : <?php echo $Reader["ID"]; ?> </p>
-	    			<p class="Idea_Date">Date : <?php echo $Reader["Date_Soumission"]; ?> </p>
-
+			<div class="card-header" style="color: white; background: #A52A2A;">
+				<div class="row">	
+					<div class=" col-lg-2">
+	    				<p class="Idea_ID"> ID : <?php echo $Reader["ID"]; ?> </p>
+	    			</div>
+	    			<div class=" col-lg-2 col-lg-push-8">
+	    				<p class="Idea_Date">Date : <?php echo $Reader["Date_Soumission"]; ?> </p>
+	    				</div>
+	    			<div class="col-lg-2 col-lg-push-1">
+	    				<p class="IDEA_Name"> Nom : <?php echo $_SESSION['Nom'];  ?></p>
+	    				<p class="IDEA_Surname"> Prenom : <?php echo $_SESSION['Prenom'];  ?></p>
+	    			</div>
 	    		</div>
+
+	    	</div>
 
 	    		<div class="card-body" style="margin-bottom: 3%;">
 
@@ -51,19 +71,42 @@
 				</div>
 				</div>
 			</div>
-		</div>
+	</div>
+		
 
-	<?php  
+<?php  
 		}
 
 	?>
 
-	<script type="text/javascript">
-		function test()
-		{
-			alert("test");
-		}
-	</script>
+<form method="post" action="Add_Idea.php">
+	<div class="row">
+		 <div class="form-group" >
+	 		<div class="col-lg-6 col-lg-push-3">
+	 			<label for="formGroupExampleInput"></label>
+	 		<div class="col-lg-6 col-lg-push-3">
+		 		<h3> Ajout d'Objet</h3>
+			 		<input type="text" class="form-control" name="Objet" placeholder="Objet"/>
+				</br>
+			</div>
+			<div class="col-lg-12">
+				<h3>Description</h3>
+				<input type="text" class="form-control" name="Description" placeholder="Description..."/>
+    			</br>
+    		</div>
+    		<div class="col-lg-4 col-lg-push-4">
+   					 <button type="submit" class="btn btn-danger active">Ajout d'idée</button>
+   			</div>
+   			</div>
+  		</div>
+	</div>
+</form> </p>
+
+
+
+
+	
+
 
 	
 	<footer>
