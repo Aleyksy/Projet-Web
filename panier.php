@@ -39,7 +39,7 @@
     </div> 
 <div class = "containerpanier">  
   <div class="row">  
-
+ 
   <?php
 
   $bdd = new PDO('mysql:host=localhost;dbname=phpweb','root','');
@@ -54,33 +54,36 @@ $tab = array();
 
   {
 
-
   ?>
 
-
+    
 
 
 
       <div class="col-lg-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="Image/<?php echo $donnes['Url']; ?>" alt=""></a> <!-- image etc..-->
+                <img class="card-img-top" src="Image/<?php echo $donnes['Url']; ?>" >
                 <div class="card-body">
-                  <h4 class="card-title">
+                   <h4 class="card-title">
                    <?php echo $donnes['Article']; ?>
                   </h4>
-                  <h5><em>  <?php  $valeur = $donnes['Prix'] * $donnes['nombre'] ;
-                  echo  $donnes['Prix'].  ' x ' . $donnes['nombre'] .  ' = ' . $valeur; ?> €   </em> </h5> 
-                  <button type="button" class="btn btn-danger active btn-lg">Retirer </button>
-                  <p class="card-text"></p>  <!-- description de l'article -->
+                  <h5><em>  <?php  
+                  $valeur = $donnes['Prix'] * $donnes['nombre']; 
+                  echo  $valeur; ?>  € </em>  </h5> 
+                  <button type="button" id="salut" class="btn btn-danger active">RETIRER !
+                  </button>
+ 
                 </div>
-              </div>
+              </div> 
             </div>
-    <!-- fin a copier -->
-
+  
+ 
 <script type="text/javascript"  src="ajax.js"></script>
 <script type="text/javascript">
+  var plop  = document.getElementById('plop'); 
 
 var ajouts= document.querySelectorAll("button");
+
 
 
 
@@ -101,19 +104,27 @@ for(var i =0; i<ajouts.length; i++)
       if (httpRequest.readyState ===4){
 
 
-        alert('Vous avais retirer un article ');
+        alert('ploop');
        
-       plop.innerHTML = httpRequest.responseText;
+      plop.innerHTML = httpRequest.responseText;
   }
     }
         
-httpRequest.open('GET','retirerpanier.php?produitID=<?php  echo $donnees['ID'] ?>&id=<?php  echo $_SESSION['id']?>' ,true);
-//httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+
+
+httpRequest.open('GET','retirerpanier.php?produitID=<?php  echo $donnees['ID']; ?>' ,true);
+
+     });
+  
+}
 
 httpRequest.send('');
-  });
+ 
 
-}
+
+
+
+
 </script>
 
 
@@ -123,7 +134,11 @@ httpRequest.send('');
 array_push($tab,$valeur);
 
  }
+ 
 
+
+
+ 
 $value= 0;
 
 foreach ($tab as $key ) 
@@ -134,23 +149,21 @@ foreach ($tab as $key )
   
 }
 
-
-
 ?>
 
+
+</div>
   </div>
-</div> 
 
 
 
-  
+ 
      <div class ="containersolde">
         <p><i class="glyphicon glyphicon-shopping-cart fa-5x "></i>
-          <h4> <?php echo $value; ?> € </h4> </p> <!-- total a payer -->
-          <button type="button" class="btn btn-danger active btn-lg">Payer<i class="glyphicon glyphicon-euro  "></i></button>
+          <h4> <?php echo $value; ?> € </h4> </p> total a payer 
+          <a  href="../sendmail/mailer.php" ><button type="button" class="btn btn-danger active btn-lg">Payer</button></a>
       </div>
      
-   
 
 
 
