@@ -13,11 +13,7 @@
 <body>
 	<header>
 
-	 
-		<img src="Image/exia.png">
-
 		<?php 
-
 
 		include('header.php');
 
@@ -80,7 +76,26 @@
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p>Commentaire</p>
+      
+        <?php
+            $bdd = new PDO('mysql:host=localhost;dbname=phpweb;charset=utf8', 'root', '');
+            
+            $requete = $bdd->query("Select Prenom, Commentaire FROM commentaire_evenement INNER JOIN utilisateurs ON commentaire_evenement.ID_Utilisateurs = utilisateurs.ID");
+
+        while ($Reader = $requete->fetch() ) {
+
+      ?>
+
+        <p>
+            <?php echo $Reader["Prenom"]; ?></br>
+            <?php echo $Reader["Commentaire"]; ?>
+        </p>
+        </br>
+        </br>
+        <?php 
+            }
+        ?>
+
     </blockquote>
   </div>
 </div>
@@ -92,24 +107,31 @@
 	<div class="col-md-8 col-md-push-2">
   <div class="card">
   <div class="card-header" style="background: silver;">
-    Pose ton commentaire bb 
+    Dis nous ce que tu en penses
   </div>
   <div class="card-body">
     <p class="card-text"> 
      <div class="form-group">
     <label for="exampleFormControlTextarea1">Argumente</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+
+<!-- Envoyer les parametres (ID Session, ID_Event) au script php -->
+
+<form method="post" action="Event_com.php?id_event=5&id_user=2&">
+
+    <input type="text" size="30" style="width:600px;" name="Commentaire"/>
+
+    </br>
+    
+    <input type="submit" value="Commente">
+  
   </div>
 </form> </p>
-    <a href="#" class="btn btn-danger">Commente</a>
+
   </div>
 </div>
 		
 	</div>	
 </div>
-
-
-
 
 
 </body>
