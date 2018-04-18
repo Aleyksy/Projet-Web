@@ -1,29 +1,43 @@
+<?php  
+  session_start();
+    if (!isset($_SESSION['Nom'])) {
+      echo "connecte toi connard";
+    } 
+    else{
+      
+      
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="Css/style.css"/>
-	 <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="Css/style.css"/>
+   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title>Acceuil</title>
+  <title>Acceuil</title>
 </head>
 <body>
-	<header>
+  <header>
 
-		<?php 
+    <?php 
 
-		include('header.php');
+    include('header.php');
 
-		?>
+    ?>
 
 
-	</header>
+  </header>
 <body>
+
+
+
 <div class= "row">
-	<div class="col-sm-12 col-md-push-3">
+  <div class="col-sm-12 col-md-push-3">
 <div class="carrou" style="width: 50%; background: #A52A2A;">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Carousel indicators -->
@@ -57,41 +71,48 @@
 </div>
 
 <div class ="row">
-	<div class="col-sm-4 col-sm-push-4">
-	<div class="card">
-  <div class="card-body">
+  <div class="col-sm-4 col-sm-push-4">
+  <div class="card">
+  <div class="card-body" >
     <h1> Titre </h1>
     <p> description </p>
   </div>
 </div>
-<button type="button" class="btn btn-outline-light"> 5 <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
-	</div>
+<button type="button" class="btn btn-outline-light" style="margin-bottom: 5%;"> 5 <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
+  </div>
 </div>
 
+
+
+
+
 <div class="row">
-	<div class="col-md-8 col-md-push-2">
+  <div class="col-md-8 col-md-push-2">
+
+
 <div class="card">
+   
   <div class="card-header"  style="background: #A52A2A; color: white;">
-   <h4> Nom & Prenom </h4>
+ 
+     
+    <h4>Commentaire(s)</h4> 
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      
-        <?php
+         <?php
             $bdd = new PDO('mysql:host=localhost;dbname=phpweb;charset=utf8', 'root', '');
             
             $requete = $bdd->query("Select Prenom, Commentaire FROM commentaire_evenement INNER JOIN utilisateurs ON commentaire_evenement.ID_Utilisateurs = utilisateurs.ID");
 
         while ($Reader = $requete->fetch() ) {
-
-      ?>
-
+ ?>
+       
         <p>
-            <?php echo $Reader["Prenom"]; ?></br>
-            <?php echo $Reader["Commentaire"]; ?>
+            <?php echo $Reader["Prenom"]; ?>  </br>
+            <?php echo $Reader["Commentaire"]; ?> </br>
         </p>
-        </br>
-        </br>
+       
+
         <?php 
             }
         ?>
@@ -99,49 +120,53 @@
     </blockquote>
   </div>
 </div>
-		
-	</div>	
+    
+  </div>  
 </div>
 
 <div class="row">
-	<div class="col-md-8 col-md-push-2">
+  <div class="col-md-8 col-md-push-2">
   <div class="card">
   <div class="card-header" style="background: silver;">
-    Dis nous ce que tu en penses
+     <h3> Dis nous ce que tu en penses </h3>
   </div>
   <div class="card-body">
     <p class="card-text"> 
      <div class="form-group">
-    <label for="exampleFormControlTextarea1">Argumente</label>
+    <label for="exampleFormControlTextarea1"></label>
 
 <!-- Envoyer les parametres (ID Session, ID_Event) au script php -->
 
 <form method="post" action="Event_com.php?id_event=5&id_user=2&">
 
-    <input type="text" size="30" style="width:600px;" name="Commentaire"/>
+   <div class="form-group">
+    <label for="formGroupExampleInput"></label>
+  
+    <input type="text" class="form-control" name="Commentaire" placeholder="Commentaire..."/>
 
     </br>
-    
-    <input type="submit" value="Commente">
-  
+    <button type="submit" id="salut" class="btn btn-danger active">Commente</button>
+   
+  </div>
+
   </div>
 </form> </p>
 
   </div>
 </div>
-		
-	</div>	
+    
+  </div>  
 </div>
 
 
 </body>
 
-	
-	<footer>
-		<?php
-		include('footer.php');
-				?>
-	</footer>
+  
+  <footer>
+    <?php
+    include('footer.php');
+        ?>
+  </footer>
 
 
 
