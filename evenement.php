@@ -1,3 +1,16 @@
+<?php  
+  session_start();
+    if (!isset($_SESSION['Nom'])) {
+      echo "connecte toi connard";
+    } 
+    else{
+      
+      
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,39 +24,71 @@
 	<header>
 
 	 
-		<img src="Image/exia.png">
+		<
 
 		<?php 
-
-
 		include('header.php');
-
 		?>
 
 
 	</header>
 <article>
 
+
+<?php
+
+$bdd = new PDO('mysql:host=localhost;dbname=phpweb','root','');
+
+
+
+$afficher = $bdd->query('SELECT * FROM evenement INNER JOIN images on images.ID_Evenement =evenement.ID_eve ' );
+
+  while ($donnes = $afficher->fetch())
+
+{
+
+
+
+   $likes = $bdd->prepare('SELECT COUNT(ID_Utilisateurs) AS participant FROM evenement INNER JOIN like_evenement ON evenement.ID_eve = like_evenement.ID_Evenement WHERE ID_eve =?'); 
+
+
+    $likes->execute(array($donnes['ID_eve']));
+
+ $date = $likes->fetch(); 
+
+?> 
+
+
+
+
+	
+
 <div class="row">
 <!-- début a copier -->
 	<div class="col-lg-4">
 		<div class="cardevenement" style="width: 100%; background: silver; margin-bottom: 5%">
- 				 <img class="card-img-top" src="Image/cube.png" alt="Card image cap" style="width: 100%;"> <!-- image de l'event -->
+ 				 <img class="card-img-top" src="Image/<?php echo$donnes['Link'];?>" alt="Card image cap" style="width: 100%;">  
  			 <div class="card-body">
-   				 <h5 class="card-title">Titre evenement</h5> <!-- nom de l'event -->
+   				 <h5 class="card-title"><?php echo $donnes['Objet'];  ?></h5> <!-- nom de l'event -->
   			</div>
  				 <ul class="list-group list-group-flush" >
-   				 <li class="list-group-item" style="background: #F5F5F5;">Date</li><!-- date de l'event -->
-    			<li class="list-group-item" style="background: #F5F5F5;">Lieux</li> <!-- lieu de l'event -->
+   				 <li class="list-group-item" style="background: #F5F5F5;"><?php echo $donnes['Date_Soumission'];  ?></li><!-- date de l'event -->
+    			
+    		 
   				</ul>
   			<div class="card-body">
-  					<button type="button" class="btn btn-outline-light"> 5 <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
-   				 <a href="#" class="btn btn-primary btn-danger active">Photo et plus</a> <!-- redirection vers la parge de l'event -->
+  					<button type="button" class="btn btn-outline-light"><?php echo $date['participant']; ?> <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
+   				 <a href="infoeve.php?evenement=<?php echo $donnes['ID_eve']  ?>" class="btn btn-primary btn-danger active">Photo et info</a> <!-- redirection vers la parge de l'event -->
  			</div>
 		</div>
 	</div>
 
-<!-- fin a copier -->
+<?php
+}
+
+?>
+
+req
 
 </div>
 
