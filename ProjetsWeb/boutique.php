@@ -12,8 +12,11 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="Css/style.css"/>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+  <script  src="autobarre.js"></script>
 	<title>Boutique</title>
 </head>
 <body>
@@ -29,6 +32,12 @@
 		include('header.php');
 
 		?>
+    <form id="ajax-contact" class="form-inline" method="post">
+    
+      <input class="form-control mr-sm-2" type="search" name="recherche" id="recherche" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit">Search</button>
+    </form>
+    </header>
 
 	<article>
 		
@@ -166,10 +175,72 @@ httpRequest.send('');
 
 
 </article>
+<?php    if($_SESSION['Admin'] == 1 ){  ?>
+<form method="post" action="add_article.php" >
+    <p>Nom article</p>
+    <input type="text" size="20" name="article">
+    <p>Prix</p>
+      <input type="text" size="30" style="width:600px;" name="prix"/>
+    <p>URL</p>
+      <input type="file" name="url"/>
+
+      <p>Description</p>
+      <input type="text" size="30" style="width:600px;" name="description"/>
+
+      </br>
+    
+    <input type="submit" value="Commente">
+  
+  </div>
+</form> 
+
+<?php } ?>
+<!--<div id="ajout" style="margin-top: 10px">
+<form action="add_article.php" method="post">
 
 
-	</header>
-	
+
+
+<div class="form-group">
+  <div class="col-md-12">
+    <div>
+        <label>Nom de l'article</label>
+    </div>
+    <div class="col-md-6 col-md-push-3">
+    <input type="text" name="article" class="form-control" id="article"  placeholder="Nom de l'article">
+      </div>
+  </div>
+</div>
+
+     <div class="form-group">
+      <div class="col-md-12">
+        <div>
+          <label>Prix</label>
+      </div>
+      <div class="col-md-6 col-md-push-3">
+    <input type="text" name="prix" class="form-control" id="prix" placeholder="€">
+      </div>
+  </div>
+</div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <div>
+          <label>Description</label>
+      </div>
+      <div class="col-md-6 col-md-push-3">
+    <input type="text" name="description" class="form-control" id="description" placeholder="Description">
+      </div>
+  </div>
+</div>
+         <button type="submit" class="btn btn-primary btn-danger active">Valider</button>
+    
+    </div>
+ 
+  </form>
+
+</div>-->
+
 	<footer>
 		<?php
 		include('footer.php');
