@@ -46,8 +46,7 @@
         
         <div class="carousel-inner">
             <div class="item active">
-                <img src="Image/equipe.png
-              " class="img-responsive center-block" alt="First Slide">
+                <img src="Image/coca.jpg" class="img-responsive center-block" alt="First Slide">
             </div>
             
         </div>
@@ -62,6 +61,8 @@
 </div>
 </div>
 </div>
+
+
 
 
 <?php
@@ -119,7 +120,7 @@ $likes = $bdd->prepare('SELECT COUNT(ID_Utilisateurs) AS participant FROM evenem
     </div>
   </div>
     <div class="user-inputs">
-      <form action="chat.php?task=write&id_eve= <?php echo $_GET['evenement']?>" method="POST">
+      <form  class="form" action="chat.php?task=write&id_eve= <?php echo $_GET['evenement']?>" method="POST">
       
         <input type="text" class="form-control" id="content" name="content" placeholder="Commente...">
         <button type="submit" class="btn btn-secondary active" style="color: black;"> Commente</button>
@@ -154,8 +155,9 @@ function getMessages(){
 <div class="message">
           
           <span class="author" style="color: #DC143C; font-size: 60%;">${message.Nom}:</span>  
-          <span class="content" style="font-size: 45%">${message.Commentaire}</span>
-        </div>
+         
+         <span class="content" style="font-size: 45%">${message.Commentaire}</span>
+       </div>
       `
     }).join('');
 
@@ -204,7 +206,7 @@ function postMessage(event){
   requeteAjax.send(data);
 }
 
-document.querySelector('form').addEventListener('submit', postMessage);
+document.querySelector('.form').addEventListener('submit', postMessage);
 
 const interval = window.setInterval(getMessages, 3000);
 
@@ -213,29 +215,21 @@ getMessages();
 
 </script>
 
-<form method="post" action=""> <!-- script d'ajout -->
-  <div class="row">
-     <div class="form-group" >
-        <div class="col-lg-6 col-lg-push-3">
-          <label for="formGroupExampleInput"></label>
-        <div class="col-lg-6 col-lg-push-3">
-           <h3> nom de l'image</h3>
-          <input type="text" class="form-control" name="Objet" placeholder="nome de l'image"/>
-        </br>
-       
-        <div>
-       <input type="file" class="form-control-file" id="exampleFormControlFile1">
-             <button type="submit" class="btn btn-danger active">Ajout l'image</button>
-        </div>
-      </div></div>
-    </div>
-  </div>
-</form> </p>
-
 
    
 
+<form method="post" action="ajoutimage.php?evenement=<?php echo $_GET['evenement']?>" enctype="multipart/form-data">
 
+
+     <label for="mon_fichier">Si tu veus modifier ta photo de profile envoye en une nouvelle</label><br />
+     <input type="file" name="avatar"  /><br /><br />
+     <input type="text" name="Nom"  />
+   
+
+ 
+     <input class="po" type="submit" name="submit" value="Envoyer" />
+
+</form> 
 
 
 
