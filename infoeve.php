@@ -63,6 +63,8 @@
 </div>
 
 
+
+
 <?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=phpweb','root','');
@@ -79,18 +81,10 @@ $afficher = $bdd->prepare('SELECT * FROM evenement where ID_eve = :id_eve');
 
  $date = $afficher->fetch(); ?>
 
-
-
-<div class ="row">
-  <div class="col-sm-4 col-sm-push-4">
-  <div class="card">
-  <div class="card-body" >
-    <h1> <?php echo $date['Objet'] ?></h1>
+<h1> <?php echo $date['Objet'] ?></h1>
     <p> <?php echo $date['Description'] ?></p>
-  </div>
-</div>
 
-<?php
+    <?php
 $afficher->closeCursor();
 
 $likes = $bdd->prepare('SELECT COUNT(ID_Utilisateurs) AS participant FROM evenement INNER JOIN like_evenement ON evenement.ID_eve = like_evenement.ID_Evenement WHERE ID_eve =?'); 
@@ -101,24 +95,45 @@ $likes = $bdd->prepare('SELECT COUNT(ID_Utilisateurs) AS participant FROM evenem
  $like = $likes->fetch(); 
 
  ?>
-<button type="button" class="btn btn-outline-light" style="margin-bottom: 5%;"> <?php echo $like['participant'] ?> <span class="glyphicon glyphicon-thumbs-up"></span></button>
+    <button type="button" class="btn btn-outline-light" style="margin-bottom: 2%;"> <?php echo $like['participant'] ?> <span class="glyphicon glyphicon-thumbs-up"></span></button>
+
+<div class ="row">
+  <div class="col-md-6 col-md-push-3">
+  <div class="card">
+ 
+     
+  <div class="card-header"  style="background: #A52A2A; color: white;">
+
+    <h3>Commentaire(s)</h3> 
+  </div>
+ 
+  <div class="card-body" >
+    <p class="card-text">
+
+   
+  
+
+
+  <section class="chat">
+    <div class="messages" style="background: white; color: black;">
+     
+    </div>
+  </div>
+    <div class="user-inputs">
+      <form  class="form" action="chat.php?task=write&id_eve= <?php echo $_GET['evenement']?>" method="POST">
+      
+        <input type="text" class="form-control" id="content" name="content" placeholder="Commente...">
+        <button type="submit" class="btn btn-secondary active" style="color: black;"> Commente</button>
+      </form>
+    </div> </p>
+  </section>
+</div>
   </div>
 </div>
 
 
 
-  <section class="chat">
-    <div class="messages">
-     
-    </div>
-    <div class="user-inputs">
-      <form action="chat.php?task=write&id_eve= <?php echo $_GET['evenement']?>" method="POST">
-      
-        <input type="text" id="content" name="content" placeholder="Type in your message right here bro !">
-        <button type="submit"> Send !</button>
-      </form>
-    </div>
-  </section>
+
       
 <script >
   
@@ -139,9 +154,10 @@ function getMessages(){
 
 <div class="message">
           
-          <span class="author">${message.Nom}</span> : 
-          <span class="content">${message.Commentaire}</span>
-        </div>
+          <span class="author" style="color: #DC143C; font-size: 60%;">${message.Nom}:</span>  
+         
+         <span class="content" style="font-size: 45%">${message.Commentaire}</span>
+       </div>
       `
     }).join('');
 
@@ -190,7 +206,7 @@ function postMessage(event){
   requeteAjax.send(data);
 }
 
-document.querySelector('form').addEventListener('submit', postMessage);
+document.querySelector('.form').addEventListener('submit', postMessage);
 
 const interval = window.setInterval(getMessages, 3000);
 
@@ -200,10 +216,20 @@ getMessages();
 </script>
 
 
-
    
 
+<form method="post" action="ajoutimage.php?evenement=<?php echo $_GET['evenement']?>" enctype="multipart/form-data">
 
+
+     <label for="mon_fichier">Si tu veus modifier ta photo de profile envoye en une nouvelle</label><br />
+     <input type="file" name="avatar"  /><br /><br />
+     <input type="text" name="Nom"  />
+   
+
+ 
+     <input class="po" type="submit" name="submit" value="Envoyer" />
+
+</form> 
 
 
 
