@@ -220,15 +220,19 @@ getMessages();
 
 <form method="post" action="ajoutimage.php?evenement=<?php echo $_GET['evenement']?>" enctype="multipart/form-data">
 
+  <div class="row">
+      <div class="col-md-6 col-md-push-3">
+        <div class="col-md-4 col-md-push-2">
+     <label for="mon_fichier"><h3>ajouter une photo</h3></label><br />
+     
+     <input type="file" name="avatar"  />
+      <input type="text" class="form-control" name="Nom" placeholder="nom de l'image">
 
-     <label for="mon_fichier">Si tu veus modifier ta photo de profile envoye en une nouvelle</label><br />
-     <input type="file" name="avatar"  /><br /><br />
-     <input type="text" name="Nom"  />
-   
-
- 
-     <input class="po" type="submit" name="submit" value="Envoyer" />
-
+    <button type="submit" class="btn btn-secondary active" name="submit" value="Envoyer" style="color: black;"> Envoyer</button> 
+  </div>
+  </div>
+     
+</div>
 </form> 
 
 
