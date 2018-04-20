@@ -13,10 +13,9 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="Css/style.css">
-	<link rel="stylesheet" type="text/css" href="Css/boiteaidee_style.css">
+	<link rel="stylesheet" href="Css/style.css"/>
 	 <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-	<title>Boite à idées</title>
+	<title>Acceuil</title>
 </head>
 <body>
 	<header>
@@ -37,52 +36,79 @@
 
 		while ($Reader = $requete->fetch() ) {
 	?>
-			<div class="Idea">
+	<div class = "row">
 
-				<div class="Idea_ID_Date">
+		<div class=" col-lg-8 col-lg-push-2">
+			<div class="card text-center" style="background: 	#F8F8FF;">
 
-	    			<p class="Idea_ID"> ID : <?php echo $Reader["ID"]; ?> </p>
-	    			<p class="IDEA_Name"> Nom : <?php echo $_SESSION['Nom'];  ?></p>
-	    			<p class="IDEA_Surname"> Prenom : <?php echo $_SESSION['Prenom'];  ?></p>
-	    			<p class="Idea_Date">Date : <?php echo $Reader["Date_Soumission"]; ?> </p>
-
+			<div class="card-header" style="color: white; background: #A52A2A;">
+				<div class="row">	
+					<div class=" col-lg-2">
+	    				<p class="Idea_ID"> ID : <?php echo $Reader["ID"]; ?> </p>
+	    			</div>
+	    			<div class=" col-lg-2 col-lg-push-8">
+	    				<p class="Idea_Date">Date : <?php echo $Reader["Date_Soumission"]; ?> </p>
+	    				</div>
+	    			<div class="col-lg-2 col-lg-push-1">
+	    				<p></p>
+	    			</div>
 	    		</div>
 
-	    		<div>
+	    	</div>
 
-	    			<p class="Idea_Objet"> Objet : <?php echo $Reader["Objet"]; ?>  </p>
-					<p class="Idea_Description">Description : <?php echo $Reader["Description"]; ?> </p>
+	    		<div class="card-body" style="margin-bottom: 3%;">
+
+	    			<h3 class="card-title"> Objet : <?php echo $Reader["Objet"]; ?>  </h3>
+					<p class="card-text">Description : <?php echo $Reader["Description"]; ?> </p>
+
+					<button type="button" class="btn btn-outline-light"> 5 <!-- compteur --><span class="glyphicon glyphicon-thumbs-up"></span></button>
+					<a href = "ScriptIdeaMove.php?mode=0&id=<?php echo $Reader["ID"];?>"  class="btn btn-primary btn-success active">Valider</a>
+					<a href="modif.php?id=<?php echo $Reader["ID"];?>" class="btn btn-primary btn-btn-primary active">Modifier</a>
+					<a href = "ScriptIdeaMove.php?mode=1&id=<?php echo $Reader["ID"];?>" class="btn btn-primary btn-warning active">Suppr</a>
+					
+
+
+					
 
 				</div>
-
-				<div>
-					<a href="Like_Idea.php?id=<?php echo $Reader["ID"];?>&user=2">Like</a>
-					<?php    if($_SESSION['Admin'] == 1 ){  ?>
-					<a href="modif.php?id=<?php echo $Reader["ID"];?>"" class="Idea_Modifier">Modifier</a>
-					<a href = "ScriptIdeaMove.php?mode=0&id=<?php echo $Reader["ID"];?>"  class="Idea_Valider">Valider</a>
-					<a href = "ScriptIdeaMove.php?mode=1&id=<?php echo $Reader["ID"];?>" class="Idea_Suppr" style="background-color: red;">Suppr</a>
-					<?php } ?>
-
 				</div>
-				
 			</div>
-	<?php  
+	</div>
+		
+
+<?php  
 		}
 
 	?>
- 
-	<form method="post" action="Add_Idea.php">
-		<p>Objet</p>
-		<input type="text" size="20" name="Objet">
-		<p>Description</p>
-    	<input type="text" size="30" style="width:600px;" name="Description"/>
 
-    	</br>
-    
-    <input type="submit" value="Commente">
-  
-  
-</form> 
+<form method="post" action="Add_Idea.php">
+	<div class="row">
+		 <div class="form-group" >
+	 		<div class="col-lg-6 col-lg-push-3">
+	 			<label for="formGroupExampleInput"></label>
+	 		<div class="col-lg-6 col-lg-push-3">
+		 		<h3> Ajout d'Objet</h3>
+			 		<input type="text" class="form-control" name="Objet" placeholder="Objet"/>
+				</br>
+			</div>
+			<div class="col-lg-12">
+				<h3>Description</h3>
+				<input type="text" class="form-control" name="Description" placeholder="Description..."/>
+    			</br>
+    		</div>
+    		<div class="col-lg-4 col-lg-push-4">
+   					 <button type="submit" class="btn btn-danger active">Ajout d'idée</button>
+   			</div>
+   			</div>
+  		</div>
+	</div>
+</form> </p>
+
+
+
+
+	
+
 
 	
 	<footer>
