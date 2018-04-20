@@ -221,7 +221,7 @@ getMessages();
 <form method="post" action="ajoutimage.php?evenement=<?php echo $_GET['evenement']?>" enctype="multipart/form-data">
 
   <div class="row">
-      <div class="col-md-6 col-md-push-3">
+      <div class="col-md-6 col-md-push-4">
         <div class="col-md-4 col-md-push-2">
      <label for="mon_fichier"><h3>ajouter une photo</h3></label><br />
      

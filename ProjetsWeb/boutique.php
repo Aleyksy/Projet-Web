@@ -176,23 +176,40 @@ httpRequest.send('');
 
 </article>
 <?php    if($_SESSION['Admin'] == 1 ){  ?>
-<form method="post" action="add_article.php" >
-    <p>Nom article</p>
-    <input type="text" size="20" name="article">
-    <p>Prix</p>
-      <input type="text" size="30" style="width:600px;" name="prix"/>
-    <p>URL</p>
-      <input type="file" name="url"/>
 
-      <p>Description</p>
-      <input type="text" size="30" style="width:600px;" name="description"/>
 
-      </br>
-    
-    <input type="submit" value="Commente">
-  
+<h1><span> Nouvel article :</span></h1>
+  <form action="add_article.php" >
+  <div class ="form-row">
+  <div class="col-md-12">
+    <div>
+      <label for="formGroupExampleInput">Article</label>
+    </div>
+    <div class="form-group col-md-3 col-md-push-3">
+          <input type="text" class="form-control" name="article" placeholder="Nom de l'article">
+      </div>
+    <div class="form-group col-md-3 col-md-push-3">
+      <input type="text" class="form-control" name="prix" placeholder="Prix de l'article">
+      </div> 
   </div>
-</form> 
+ </div>
+    <div class ="form-row">
+        <div class="col-md-12">
+    <div class="form-group col-md-6 col-md-push-3">
+      <input type="text" class="form-control" name="description" placeholder="description de l'artique">
+      </div>   
+  </div>
+ </div>
+  <div class="form-group col-md-4 col-md-push-4">
+    <div>
+    <label for="exampleFormControlFile1">image de l'article</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+  </div>
+     <button type="submit" value="Commente" class="btn btn-primary btn-danger active btn-lg">Ajouter article</button>
+  </form>
+
+ 
 
 <?php } ?>
 <!--<div id="ajout" style="margin-top: 10px">
